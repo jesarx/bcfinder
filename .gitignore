@@ -1,0 +1,4 @@
+.venv
+.vscode
+blockchair_bitcoin_addresses_and_balance_LATEST.tsv
+__pycache__

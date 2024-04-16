@@ -7,6 +7,7 @@ def loadWallets(NumberOfLines=10):
     if not os.path.exists('blockchair_bitcoin_addresses_and_balance_LATEST.tsv'):
         print('Downloading wallet list...')
         os.system('wget http://addresses.loyce.club/blockchair_bitcoin_addresses_and_balance_LATEST.tsv.gz')
+        print('Uncompressing wallet list...')
         os.system('tar -xzf blockchair_bitcoin_addresses_and_balance_LATEST.tsv.gz')
         os.system('rm blockchair_bitcoin_addresses_and_balance_LATEST.tsv.gz')
     
@@ -24,6 +25,7 @@ def loadWallets(NumberOfLines=10):
 def writeFoundKeys(pKeysFound):
     with open('foundKeys.txt', 'w') as file:
         for pair in pKeysFound:
-            file.write(str(pair) + '\n')            
+            file.write(str(pair) + '\n')
+            
     return None
   

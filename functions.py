@@ -31,7 +31,12 @@ def loadWallets():
 
 
 def writeFoundKeys(pKeysFound):
+    existingContent = []
+    with open("foundKeys.txt", "r") as file:
+        existingContent = file.readlines()
+
     with open("foundKeys.txt", "w") as file:
+        file.writelines(existingContent)
         for pair in pKeysFound:
             file.write(str(pair) + "\n")
 

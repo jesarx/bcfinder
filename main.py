@@ -1,6 +1,8 @@
 from cryptos import Bitcoin
 import os
 import functions as f
+import sys
+import time
 
 b = Bitcoin()
 
@@ -21,6 +23,9 @@ while True:
         pKeysFound = []
         count = 0
 
+        sleepTime = input("Enter wait time per search (in milliseconds): ")
+        sleepTimeMS = int(sleepTime) / 1000
+
         while True:
             randWallet = f.genWallet()
 
@@ -33,11 +38,16 @@ while True:
                 f.writeFoundKeys(pKeysFound)
 
             count += 1
-
-            os.system("clear")
-            print(
-                f"{count:,} bitcoin adresses searched, {len(pKeysFound)} private keys with balance found."
+            sys.stdout.write(
+                f"\r{count:,} bitcoin addresses searched, {len(pKeysFound)} private keys with balance found."
             )
+            sys.stdout.flush()
+
+            time.sleep(sleepTimeMS)
+            # os.system("clear")
+            # print(
+            #     f"{count:,} bitcoin adresses searched, {len(pKeysFound)} private keys with balance found."
+            # )
 
     elif userAction == "2":
         os.system("clear")
